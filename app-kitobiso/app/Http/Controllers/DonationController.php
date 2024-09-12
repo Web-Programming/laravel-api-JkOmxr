@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Donatur;
 use Illuminate\Http\Request;
 
-class DonaturController extends Controller
+class DonationController extends Controller
 {
     /**
      * Display a listing of the resource.
