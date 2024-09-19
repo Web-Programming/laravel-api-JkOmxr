@@ -45,6 +45,9 @@ Route::get('/funding/{id}', [FundingController::class, 'destroy']); //delete dat
 //Route::get('/donation', [DonationController::class, 'index']);
 Route::apiResource('donation', DonationController::class);
 
+Route::post('/logout', [AuthController::class, 'logout']);
+
+
 });
 
 Route::post('/login', [AuthController::class, 'login']);
