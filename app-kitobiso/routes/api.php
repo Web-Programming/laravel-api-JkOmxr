@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FundingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +31,8 @@ Route::get('/menu', function(Request $request){
     },
 ]
 */
+Route::group(['middleware' => 'auth:sanctum'], function() {
+
 
 //API CRUD Funding
 Route::get('/funding', [FundingController::class, 'index']);     //get all data
@@ -41,6 +44,11 @@ Route::get('/funding/{id}', [FundingController::class, 'destroy']); //delete dat
 //API CRUD Donation
 //Route::get('/donation', [DonationController::class, 'index']);
 Route::apiResource('donation', DonationController::class);
+
+});
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/donatur', function(Request $request){
     return response()->json(
